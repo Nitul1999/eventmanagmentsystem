@@ -1,0 +1,13 @@
+.items{
+    display: grid;
+    grid-template-columns: 5fr  repeat(auto,1fr);
+    background: rgb(130, 130, 130);
+}
+
+.evetns-items{
+    margin: 10px 10px 10px 10px;
+}
+.events{
+    display: grid;
+    grid-template-columns: 3fr;
+}
