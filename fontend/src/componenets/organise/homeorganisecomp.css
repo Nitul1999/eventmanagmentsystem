@@ -1,0 +1,69 @@
+.organise-card-section {
+        width: 500px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        text-align: left;
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 10px;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.organise-card-section:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgb(26, 173, 206);
+    text-decoration: none;
+}
+
+.text,
+.image-section {
+    flex: 1;
+    min-width: 20px;
+    /* Ensures sections don't shrink too much */
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgb(191, 14, 255);
+    
+}
+.text p{
+    color: white;
+    font-size: 1.3rem;
+}
+
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    /* Optional: for rounded corners */
+}
+
+@media (max-width: 768px) {
+    .organise-card-section {
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+    }
+
+    .text,
+    .image-section {
+        min-width: unset;
+        /* Removes minimum width constraint */
+        text-align: center;
+        /* Centers text on smaller screens */
+    }
+    .text{
+        border-right: none;
+    }
+}

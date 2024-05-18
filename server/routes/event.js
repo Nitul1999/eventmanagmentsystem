@@ -1,5 +1,5 @@
 const express = require('express')
-const { getallevent, createevent, updateevent,singlevent, deletevent, updateprice, updatecapacity, geteventuser } = require('../controllers/event')
+const { getallevent, createevent, updateevent,singlevent, deletevent, updateprice, updatecapacity, geteventuser, toprating, latest } = require('../controllers/event')
 
 const router = express.Router()
 
@@ -10,7 +10,9 @@ router.get( '/:id',singlevent)
 //returns user's events only
 router.get('/event/my/:id',geteventuser)
 //get all events by top rating
-router.get('/rating',)
+router.get('/rating',toprating)
+//get event latest
+router.get('/latest/event',latest)
 //cretae a event by user/organise
 router.post('/post',createevent)
 //update a evenet/mannage

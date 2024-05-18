@@ -71,23 +71,6 @@
     background-color: #0056b3;
 }
 
-/* .popup-card {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  row-gap: 1em;
-  transform: translate(-50%, -50%);
-  overflow-y: auto;
-  z-index: 999;
-  width: 90%;
-  height: 90%;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #b5e8e0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} */
-
 .popup-overlay {
     display: none;
     position: fixed;

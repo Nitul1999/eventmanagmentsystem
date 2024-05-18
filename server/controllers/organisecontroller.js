@@ -4,12 +4,12 @@ const organise = require('../model/organisemodel')
 
 //get all organise by  top rating
 const getallorganise = async(req,res)=>{
-    const allorganise = await organise.find({}).sort({ 'createdAt': 1})
+    const allorganise = await organise.find()
     res.status(200).json(allorganise)
 }
 //get all organize by top rating
 const getbytoprating = async(req,res)=>{
-    const ratingtop = await organise.find().sort({'rating': 1})
+    const ratingtop = await organise.find().sort({rating: 1}).limit(6)
     res.status(200).json(ratingtop)
 }
 

@@ -50,11 +50,19 @@ export const Sidenav = () => {
         ☰
       </button>
       <ul className="snavbar-links">
-          {currentuser ==="Organiser" && 
-          <li><Link to='/createorganization'>Create Oranizaion</Link></li>
+          {
+            currentuser ==="User" &&
+              <Link to={`/profile/${userId}`}> <FontAwesomeIcon icon={faUser} className='icon' /></Link>
           }
-          <li><Link to={`/myorg/${user}`}>Manage My organize</Link></li>
+          {currentuser ==="Organiser" && 
+              <li><Link to='/createorganization'>Create Oranizaion</Link></li>
+          } 
+          {currentuser ==="Organiser" &&
+              <li><Link to={`/myorg/${user}`}>Manage My organize</Link></li> 
+          }
+          
           <li><Link to ={`/myevent/${user}`}>My Events</Link></li>
+
           {currentuser ==="Organiser" && 
             <li><a href="#">All Booking</a></li>
           }

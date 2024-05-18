@@ -19,6 +19,19 @@ const singlevent = async(req,res)=>{
     }
     res.status(201).json(eventdata)
 }
+//return top rating events
+const toprating = async(req,res)=>{
+     try {
+        // Assuming 'event' is your mongoose model
+        const top = await event.find({ rating: 1 });
+        // Send the response back to the client
+        res.status(200).json({ success: true, data: top });
+    } catch (error) {
+        // If an error occurs during the database operation or response sending, handle it
+        console.error("Error fetching top rating events:", error);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+}
 
 //get event by user id
 const geteventuser = async(req,res)=>{
@@ -145,6 +158,19 @@ try{
    }
 }
 
+//latest create date
+const latest = async(req,res)=>{
+    try{
+            const latestevent = await event.find().sort({ createdAt: -1 }).limit(3);
+            if(!latestevent){
+                res.status(400).json({error:"nothing to show"})
+            }
+            res.status(200).json(latestevent)
+    }catch(error){
+         res.status(400).json(error)
+    }
+}
+
 module.exports ={ 
   getallevent ,
   deletevent,
@@ -153,5 +179,7 @@ module.exports ={
   geteventuser,
   singlevent,
   updateprice,
-  updatecapacity
+  updatecapacity,
+  toprating,
+  latest
 }

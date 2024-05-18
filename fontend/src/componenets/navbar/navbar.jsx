@@ -41,12 +41,9 @@ export const Navbar = () => {
             <li className="nav-item">
               <Link to='/' className="nav-link">Home</Link>
             </li>
-            { usertype==="User" &&
               <li className="nav-item">
                 <a className="nav-link" href="/about">About</a>
               </li>
-            }
-
             <li className="nav-item">
               <a className="nav-link" href="/events">Events</a>
             </li> 
@@ -54,18 +51,17 @@ export const Navbar = () => {
                <Link to='/organise' className="nav-link">Organise</Link>
              
             </li>
-             <li className="nav-item">
+             {/* <li className="nav-item">
              { usertype ==="Organiser" && <Link to='' className="nav-link"> {usertype}</Link>} 
-            </li>
-             <li className="nav-item">
-             { usertype ==="User" && <Link to='' className="nav-link"> {usertype}</Link>}
-            </li>
+            </li> */}
           </ul>
           {isAuthenticated ? (
               <>
                 <div className="profile">
                   {/* <Avater backgroundColor="purple" color='white' fontSize='50px' px='40px' py='30px'/> */}
+                  {usertype ==="Organiser" &&
                   <Link to={`/profile/${currentuser}`}> <FontAwesomeIcon icon={faUser} className='icon' /></Link>
+                  }
                </div>
               </>
             ) : (

@@ -1,0 +1,26 @@
+.organise-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.organise-card {
+    background-color: #e7f4ff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    width: 300px;
+}
+
+.organise-card p {
+    margin: 0.5rem 0;
+}
+
+.edetails {
+    display: flex;
+    justify-content: space-around;
+}
