@@ -78,3 +78,9 @@ nav{
     height: 90%;
     cursor: pointer;
 }
+
+.login-btn{
+    border: 1px solid blue;
+    width:150%;
+    padding:10px;
+}

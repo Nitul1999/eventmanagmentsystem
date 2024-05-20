@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
 import {useParams, useNavigate } from 'react-router-dom'
+import './vieworg.css'
 export const Vieworganise = () => {
 
     const [org, setorg] = useState('')
@@ -65,11 +66,19 @@ export const Vieworganise = () => {
   return (
     <>
         <div className="myorg"> 
-        {/* <p>{organiseid}</p> */}
            <p>{org.name}</p>
            <p>{org.email}</p>
            <p>{org.owner}</p>
            <p>{org.phone }</p>
+           <p>{org.startdate}</p>
+           <p>{org.location}</p>
+           <p>{org.address}</p>
+           <p>{org.pin}</p>
+           <p>{org.postoffice}</p>
+           <p>{org.state}</p>
+           <p>{org.service}</p>
+           <p>{org.status}</p>
+           <p>{org.rating}</p>
         </div>
           <> {isFormOpen && (
                              <div className="form-popup">

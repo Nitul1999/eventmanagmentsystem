@@ -1,16 +1,61 @@
 import React from 'react';
 import { useState } from "react";
 import StarRating from "../StarRating";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import "./style.css";
 
 
 export const Events = ({ event }) => {
    const [showPopup, setShowPopup] = useState(false);
-
+   const [showbookingform,setshowbookingform] = useState(false)
+   const navigate = useNavigate()
+   const userId = localStorage.getItem("User")
+  
+   const [name ,setname]= useState('')
+   const [bookingdate,setbookingdate] = useState('')
+   const [noofday,setnoofday] = useState('')
+   const [location,setlocation] = useState('')
+   const [pin,setpin] =useState('')
+   const [district,setdistrict] = useState('')
+   const [contact,setcontact]=useState('')
+   const [email ,setemail]= useState('')
+   const[panno,setpanno]=useState('')
+   
+   const organiseId = event.organiseId
+   const eventId = event._id
+   const eventname = event.name
+   const eventtype =event.type
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
+  const togglebooking =()=>{
+   setshowbookingform(!showbookingform)
+  }
+  const toggleOff=()=>{
+    setshowbookingform(false)
+  }
+  const Createbooking =async(e)=>{
+    e.preventDefault();
+    const data = {name,userId,organiseId,eventId,bookingdate,noofday,location,pin,district,contact,email,panno,eventname,eventtype}
+    try {
+      const response = await fetch(`http://localhost:5000/booking/post`,{
+        method:'POST',
+        body:JSON.stringify(data),
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+      if(!response.ok){
+        throw new Error('Data not submitted ');
+      }
+      const mybooking =await response.json()
+      console.log(mybooking)
+      window.alert(`Booking Created`)
+      navigate('/mybooking')
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <div className="event-container">
       <div className="events-card">
@@ -70,9 +115,44 @@ export const Events = ({ event }) => {
               ))}
             </p>
           </div>
-             <Link to={`/booking/${event._id}`}>
-              <button className="book-btn">Book Now</button>
-            </Link>
+           
+              <button className="book-btn" onClick={() => togglebooking()}>Book Now</button>
+              
+              <> {showbookingform &&(
+              <div className="container-create-booking">
+                <p>Notes: Payment Status/Booking Status will be update by Event manager later,Somthing price will increase depand on no of days... </p>
+                <form onSubmit={Createbooking}>
+                  <div>
+                    <label htmlFor="name">Your Name</label>
+                    <input type="text" placeholder='Enter your name' required onChange={(e)=>setname(e.target.value)} value={name}/>
+                    <label htmlFor="date">Pick a date</label>
+                    <input type="date" required onChange={(e)=>setbookingdate(e.target.value)} value={bookingdate}/>
+                    <label htmlFor="duration">Number of Days</label>
+                    <input type="number" placeholder='No of days' required onChange={(e)=>setnoofday(e.target.value)} value={noofday}/>
+                    <label htmlFor="location"> Location </label>
+                    <input type="text" placeholder='Event location' required onChange={(e)=>setlocation(e.target.value)} value={location}/>
+                    <label htmlFor="pin">Pin Number</label>
+                    <input type="number" placeholder='Pin number' required onChange={(e)=>setpin(e.target.value)} value={pin}/>
+                    <label htmlFor="district"> District </label>
+                    <input type="text" placeholder='District' required onChange={(e)=>setdistrict(e.target.value)} value={district} />
+                    <label htmlFor="contect no">Contact-No</label>
+                    <input type="tel" placeholder='Your Contact Number' required onChange={(e)=>setcontact(e.target.value)} value={contact}/>
+                    <label htmlFor="email"> Email Id</label>
+                    <input type="email"  placeholder='Email Id' required onChange={(e)=>setemail(e.target.value)} value={email}/>
+                    <label htmlFor="pan no"> Pan Number</label>
+                    <input type="text" required placeholder='Pan card no' onChange={(e)=>setpanno(e.target.value)} value={panno} />
+                  </div>
+                  <div className="btn-section-book">
+                       <button className='submit-btn' type='submit'>Booked</button>
+                       <button onClick={()=>toggleOff()} > Close </button>
+                  </div>
+                 
+                </form>
+               
+              </div>
+              )}</>
+
+            {/* </Link> */}
           <div className="comment-cotainer box">
             {event.comment &&
               event.comment.map((comment, index) => (

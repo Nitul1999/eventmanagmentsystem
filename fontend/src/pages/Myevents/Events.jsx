@@ -1,10 +1,10 @@
 import React from 'react'
 import {useEffect,useState } from 'react'
 import Myeventcomponent from '../../componenets/Myevent/Myeventcomponent'
-
+import './myevent.css'
 const Events = () => {
 
-    const [events,setEvents] = useState([null])
+    const [events, setEvents] = useState([]);
     const  currentuser = localStorage.getItem('User')
 
     useEffect(() => {
@@ -20,31 +20,36 @@ const Events = () => {
           return;
         }
         const myevn = await response.json();
-        setEvents(myevn);
+        // setEvents(myevn);
+        if (Array.isArray(myevn)) {
+                    setEvents(myevn);
+                } else if (myevn && typeof myevn === 'object') {
+                    // If the data is an object, convert it into an array with a single item
+                    setEvents([myevn]);
+                } else {
+                    console.error('Fetched data is not an array or object:', myevn);
+                    setEvents([]);
+                }
+        
       }
       getEvent();
-    return;
+      return;
 
     }, [currentuser])
+    if (!events || events.length === 0) {
+        return <div>Nothing to Show</div>;
+    }
+  // if (!events) return <div>Nothing to Show</div>;
 
   return (
-    <div>
-     {/* {events && events.map((event)=>(
-      <Myeventcomponent key={event?._id } events={event} />
-     ))} */}
-      <div className="myevent">
-        <p>event name:{events.name}</p>
-        <p>event type: {events.type}</p>
-        <p>event capacity {events.capcity}</p>
-        <p> event price:{events.price}</p>
-        <p>event date:{events.createOn}</p>
-        <p>Status:{events.status}</p>
-        <p> event rating:{events.rating}</p>
-        <p>event description:{events.description}</p>
-        <p>event total booking:{events.totalbooking}</p>
-        <p>event no of comment:{events.noofcomment}</p>
+    <div className='myevents-container'>
+      <h2>My Events</h2>
+      <div className="component-section">
+        
+       {events && events.map((myev) => (
+                    <Myeventcomponent key={myev?._id} myev={myev} />
+                ))}
       </div>
-      <button> delete event</button>
     </div>
   )
 }

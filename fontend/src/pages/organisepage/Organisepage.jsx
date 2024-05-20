@@ -1,5 +1,6 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
 import { Organise } from '../../componenets/organise/organise';
 import "./Organisepage.css"
 
@@ -31,7 +32,7 @@ export const Organisepage = () => {
              
                  {
                   organise && organise.map((organise)=>(
-                  <Organise key={organise._id}  organise={organise} />
+                 <Link><Organise key={organise._id}  organise={organise} /></Link> 
                   ))
                  }
     </div>

@@ -24,9 +24,9 @@ const getsinglebooking = async(req,res)=>{
 const createbooking = async(req,res)=>{
 
     const postbookingdata = req.body
-    const userId = req.userId
-    const organiseId = req.organiseId
-    const createbook = await booking.create({...postbookingdata,userId,organiseId})
+    // const userId = req.userId
+    // const organiseId = req.organiseId
+    const createbook = await booking.create({...postbookingdata})
     
   if(!createbook){
     res.status(500).json({error: "booking not create"})

@@ -88,7 +88,7 @@ return (
 
                 <button type="submit" className='btns'>Submit</button>
         </form>
-       </div>
+    </div>
     </>
   )
 }

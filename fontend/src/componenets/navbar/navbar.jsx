@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUser} from '@fortawesome/free-solid-svg-icons'
 import { UserProfile } from '../../pages/UserProfile/UserProfile';
 import { Sidenav } from '../Sidenav/Sidenav';
-
+ import logo from '../../assets/mainlogo.png'
 
 export const Navbar = () => {
 
@@ -42,18 +42,15 @@ export const Navbar = () => {
               <Link to='/' className="nav-link">Home</Link>
             </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">About</a>
+                <Link className="nav-link" to="/about">About</Link>
               </li>
             <li className="nav-item">
-              <a className="nav-link" href="/events">Events</a>
+              <Link className="nav-link" to="/events">Events</Link>
             </li> 
             <li className="nav-item">
                <Link to='/organise' className="nav-link">Organise</Link>
              
             </li>
-             {/* <li className="nav-item">
-             { usertype ==="Organiser" && <Link to='' className="nav-link"> {usertype}</Link>} 
-            </li> */}
           </ul>
           {isAuthenticated ? (
               <>
@@ -68,10 +65,7 @@ export const Navbar = () => {
               <>
                 <ul className='auth'>
                   <li className="nav-item">
-                      <Link to='/login' className="nav-link">Sign In</Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to='/signup' className="nav-link">Sign Up</Link>
+                      <Link to='/login' className="nav-link login-btn">LogIn</Link>
                     </li>   
                 </ul>
               </>

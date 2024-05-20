@@ -60,15 +60,18 @@ export const Sidenav = () => {
           {currentuser ==="Organiser" &&
               <li><Link to={`/myorg/${user}`}>Manage My organize</Link></li> 
           }
-          
-          <li><Link to ={`/myevent/${user}`}>My Events</Link></li>
-
+          {currentuser ==="Organiser" &&
+              <li><Link to ={`/myevent/${user}`}>My Events</Link></li>
+          }
           {currentuser ==="Organiser" && 
-            <li><a href="#">All Booking</a></li>
+            <li><Link href="#">All Booking</Link></li>
           }
        
+          { currentuser ==="User" &&
+           <li><Link to="#">My Booking</Link></li>
+           }
+         
 
-        <li><a href="#">My Booking</a></li>
         <li><Link onClick={handleLogout}> Logo Out</Link></li>
       </ul>
     </div>

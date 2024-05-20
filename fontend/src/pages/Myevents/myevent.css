@@ -1,0 +1,17 @@
+.myevent p{
+    color: black;
+}
+.myevents-container h2{
+        margin: 30px;
+        border-bottom: 1px solid blue;
+        padding-bottom: 10px;
+}
+.component-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.component-section p{
+    color: black;
+}

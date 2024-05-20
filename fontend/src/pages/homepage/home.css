@@ -13,6 +13,9 @@
     padding: 20px;
     box-sizing: border-box;
 }
+.heading,.para{
+    color: black;
+}
 
 .left {
     text-align: left;
@@ -109,6 +112,12 @@
         padding: 20px;
         box-sizing: border-box;
 
+}
+.text-area p{
+    margin-top: 29px;
+    color: rgb(66, 62, 62);
+    line-height: 1.6;
+    
 }
 
 .image-area img {
