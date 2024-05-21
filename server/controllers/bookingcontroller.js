@@ -32,6 +32,16 @@ const createbooking = async(req,res)=>{
   res.status(201).json(createbook)
 
 }
+
+//get booking by userId
+const getmybooking =async(req,res)=>{
+    const {id:userId} = req.params
+    const mybooking = await booking.find({userId})
+     if(!mybooking){
+    res.status(500).json({error: "booking not found"})
+  }
+  res.status(201).json(mybooking)
+}
 //delete a booking
 const deletebooking = async(req,res)=>{
 
@@ -40,7 +50,7 @@ const deletebooking = async(req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(_id)){
         res.status(404).json("booking not found")
     }
-    const  removeData = await booking.findOneAndDelete({_id ,'userId': req.userId })
+    const  removeData = await booking.findOneAndDelete({_id})
     if (!removeData) {
       return res.status(404).json({ error: 'Booking not found' });
     }
@@ -67,5 +77,6 @@ module.exports={
     createbooking,
     getsinglebooking,
     deletebooking,
-    updatebooking 
+    updatebooking,
+    getmybooking 
 }

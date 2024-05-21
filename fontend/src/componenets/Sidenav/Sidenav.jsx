@@ -68,7 +68,7 @@ export const Sidenav = () => {
           }
        
           { currentuser ==="User" &&
-           <li><Link to="#">My Booking</Link></li>
+           <li><Link to={`/mybooking/${userId}`}>My Booking</Link></li>
            }
          
 

@@ -12,7 +12,7 @@ export const Events = ({ event }) => {
    const userId = localStorage.getItem("User")
   
    const [name ,setname]= useState('')
-   const [bookingdate,setbookingdate] = useState('')
+   const [bookingDate,setbookingDate] = useState('')
    const [noofday,setnoofday] = useState('')
    const [location,setlocation] = useState('')
    const [pin,setpin] =useState('')
@@ -36,7 +36,7 @@ export const Events = ({ event }) => {
   }
   const Createbooking =async(e)=>{
     e.preventDefault();
-    const data = {name,userId,organiseId,eventId,bookingdate,noofday,location,pin,district,contact,email,panno,eventname,eventtype}
+    const data = {name,userId,organiseId,eventId,bookingDate,noofday,location,pin,district,contact,email,panno,eventname,eventtype}
     try {
       const response = await fetch(`http://localhost:5000/booking/post`,{
         method:'POST',
@@ -51,7 +51,7 @@ export const Events = ({ event }) => {
       const mybooking =await response.json()
       console.log(mybooking)
       window.alert(`Booking Created`)
-      navigate('/mybooking')
+      navigate(`/mybooking/${userId}`)
     } catch (error) {
       console.error(error);
     }
@@ -126,7 +126,7 @@ export const Events = ({ event }) => {
                     <label htmlFor="name">Your Name</label>
                     <input type="text" placeholder='Enter your name' required onChange={(e)=>setname(e.target.value)} value={name}/>
                     <label htmlFor="date">Pick a date</label>
-                    <input type="date" required onChange={(e)=>setbookingdate(e.target.value)} value={bookingdate}/>
+                    <input type="date" required onChange={(e)=>setbookingDate(e.target.value)} value={bookingDate}/>
                     <label htmlFor="duration">Number of Days</label>
                     <input type="number" placeholder='No of days' required onChange={(e)=>setnoofday(e.target.value)} value={noofday}/>
                     <label htmlFor="location"> Location </label>

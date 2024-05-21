@@ -6,11 +6,11 @@ const bookingmodel = new schema({
     userId:{type: String},  //user who is making the booking
     eventId:{type:String },
     organiseId :{type:String} , //event for which the    
-    bookingDate:{ type: Date ,default: Date.now},
+    bookingDate:{ type: String},
     noofday:{type: Number},
     location:{type:String},
     pin:{type:Number},
-    distric:{type:String},
+    district:{type:String},
     contact:{type:Number},
     email:{type:String},
     panno:{type:String},
