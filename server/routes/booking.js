@@ -1,5 +1,5 @@
 const express = require('express')
-const { createbooking, getbookingall, getsinglebooking, updatebooking, getmybooking, deletebooking } = require('../controllers/bookingcontroller')
+const { createbooking, getbookingall, getsinglebooking, updatebooking, getmybooking, deletebooking, recentbooking } = require('../controllers/bookingcontroller')
 const router = express.Router()
 
 router.get('/',getbookingall)
@@ -13,6 +13,6 @@ router.post('/post',createbooking)
 router.patch('/update/:id',updatebooking )
 //delete booking
 router.delete('/delete/:id',deletebooking)
-
+router.get('/event/recent/booking/:id',recentbooking)
 
 module.exports = router

@@ -3,7 +3,7 @@ import {Link,useNavigate,useParams} from 'react-router-dom'
 import {useState} from 'react'
 
 import './mybooking.css'
-export const Mybookingcomponent = ({booking}) => {
+export const Mybookingcomponent = ({booking,organizer}) => {
 
   const [updateform,setupdateform] =useState(false)
   const navigate =useNavigate()
@@ -70,6 +70,23 @@ export const Mybookingcomponent = ({booking}) => {
     <>
        <div className="booking-card">
           <h2>Booked Event : {booking.eventname}</h2> 
+          <div className="organiser-details-card">
+                  {organizer ? (
+                  <div className="organizer-details">
+                    <h4>Organizer Name: {organizer.name}</h4>
+                        <div className="organise-details-view">
+                          <p>Contact: {organizer.phone}</p>
+                          <p>Email: {organizer.email}</p>
+                          {/* Add more organizer details as needed */}
+                        </div>
+                  </div>
+                ) : (
+                  <p>Loading organizer details...</p>
+                )} 
+                
+          </div>
+          <hr />
+           <h2>Your Details</h2>
           <div className="booking-details">
                 <p><strong>Name:</strong> {booking.name}</p>
                 {/* <p><strong>User ID:</strong> {booking.userId}</p>

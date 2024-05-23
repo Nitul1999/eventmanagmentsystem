@@ -14,12 +14,12 @@ export const Myoranization = () => {
         const [postoffice, setpostoffice] = useState('')
         const [mstate,setmstate] = useState('')
         const [service,setservice] =useState('')
+        
 
 
         const userId = localStorage.getItem("User")
         const handlesubmit = async(e)=>{
             
-           
             const data ={name,email,owner,userId,phone,date,location,address,pin,postoffice,mstate,service}
             try {
                 const response = await fetch(`http://localhost:5000/organise/post`,{
@@ -35,7 +35,8 @@ export const Myoranization = () => {
                 const result = await response.json();
                 console.log(result);
                 alert('Data submitted successfully!');
-                
+                const organiseId = result.id;
+                localStorage.setItem('OrganiseId',organiseId);
             } catch (error) {
                 console.error(error);
                 alert('Error submitting data: ' + error.message);

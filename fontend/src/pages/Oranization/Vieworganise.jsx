@@ -25,6 +25,8 @@ export const Vieworganise = () => {
       setorg(myorg);
       const orgId = myorg._id
       setorganiseid(orgId)
+
+       localStorage.setItem('OrganiseId',orgId);
     }
    
     getOrg();
@@ -65,6 +67,8 @@ export const Vieworganise = () => {
 
   return (
     <>
+    <div className="org-section">
+     
         <div className="myorg"> 
            <p>{org.name}</p>
            <p>{org.email}</p>
@@ -112,6 +116,7 @@ export const Vieworganise = () => {
           <button onClick={() => toggleForm()} >Add Event</button>
           <button>view Events</button>
         </div>
+      </div>
     </>
   )
 }

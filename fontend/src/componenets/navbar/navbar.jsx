@@ -33,7 +33,7 @@ export const Navbar = () => {
   return (
     <>
         <div className="navbar-container">
-        <nav className="navbar">
+         <nav className="navbar">
           <div className="logo">
             <img src="" alt="logo here" />
           </div>
@@ -54,12 +54,11 @@ export const Navbar = () => {
           </ul>
           {isAuthenticated ? (
               <>
-                <div className="profile">
-                  {/* <Avater backgroundColor="purple" color='white' fontSize='50px' px='40px' py='30px'/> */}
+                {/* <div className="profile">
                   {usertype ==="Organiser" &&
                   <Link to={`/profile/${currentuser}`}> <FontAwesomeIcon icon={faUser} className='icon' /></Link>
                   }
-               </div>
+               </div> */}
               </>
             ) : (
               <>

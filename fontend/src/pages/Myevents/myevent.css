@@ -2,7 +2,7 @@
     color: black;
 }
 .myevents-container h2{
-        margin: 30px;
+        margin: 10px;
         border-bottom: 1px solid blue;
         padding-bottom: 10px;
 }
@@ -11,6 +11,10 @@
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
+    gap: 16px;
+        /* Optional: Adds space between items */
+    padding: 20px;
+        /* Optional: Adds padding around the grid */
 }
 .component-section p{
     color: black;

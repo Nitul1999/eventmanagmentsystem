@@ -212,6 +212,7 @@
     margin: 20px;
      /* Firefox */
     animation: slideUp 30s linear infinite;
+    background-color: transparent;
   
 }
 
@@ -228,13 +229,13 @@
 
 .event-card-container::before {
     top: 0;
-    background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0));
+    /* background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0)); */
   
 }
 
 .event-card-container::after {
     bottom: 0;
-    background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0));
+    /* background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0)); */
    
    
 }
@@ -243,10 +244,12 @@
 @keyframes slideUp {
     0% {
         transform: translateX(40%);
+        
     }
 
     100% {
         transform: translateX(-50%);
+       
     }
 }
 
@@ -285,15 +288,13 @@
 
 .recent-card-container::before {
     top: 0;
-    background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0));
+    /* background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0)); */
 
 }
 
 .recent-card-container::after {
     bottom: 0;
-    background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0));
-
-
+    /* background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0)); */
 }
 
 /* Infinite Vertical Sliding Animation */

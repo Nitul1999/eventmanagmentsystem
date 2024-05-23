@@ -24,12 +24,34 @@
 .booking-card .booking-details {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .booking-card .booking-details p {
     flex: 1 1 100%;
 }
+.organiser-details-card{
+    display: flex;
+    justify-content: center;
+}
+.organizer-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
+}
+.organizer-details h4{
+    text-align: center;
+}
+.organise-details-view{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.organise-details-view p{
+    font-size: 17px;
+    font-weight: bold;
+}
 /* Responsive adjustments */
 @media (min-width: 600px) {
     .booking-card {

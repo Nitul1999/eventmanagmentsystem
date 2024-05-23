@@ -20,9 +20,13 @@ export const Organisepage = () => {
       const organises = await response.json()
 
       setorganise(organises)
+
     }
     getorgranise()
-    return;
+    document.title = 'EventCraft-Organizes';
+    return()=>{
+      document.title='Welcome-EventCraft'
+    };
  }, [])
 
   return (

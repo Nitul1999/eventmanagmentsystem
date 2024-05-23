@@ -76,7 +76,7 @@ const  getsingleorganize = async (req , res )=> {
     if(!singleorganize){
         res.status(404).json({error: 'user not found'})
     }
-    res.status(201).json()
+    res.status(201).json(singleorganize)
 }
 
 

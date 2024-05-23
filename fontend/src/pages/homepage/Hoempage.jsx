@@ -84,7 +84,7 @@ export const Hoempage = () => {
                   
                     {
                     events && events.map((event)=>
-                    <Link to={`/event-view/${event._id}`} className='linkcard'><TopRatingorganise key={event._id} event={event} /></Link> 
+                      <Link className='linkcard'><TopRatingorganise key={event._id} event={event} /></Link>
                     )
                     }
                     </div>
@@ -103,7 +103,7 @@ export const Hoempage = () => {
             </div>
             <div className="our-patner">
                     <h2>Our Patner</h2>
-                    <p className='collab'>We Collaborate With Several Organisation</p>
+                    <p className='collab'>We Collaborate With Several Organization</p>
                     <div className="organisation-section">
                       <div className="organisation-container">
                         { toporg && toporg.map((org)=>

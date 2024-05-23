@@ -18,8 +18,10 @@ export const Eventpage = () => {
     }
 
     getEventRecords();
-
-    return;
+    document.title='EventCraft-Events'
+    return()=>{
+      document.title ='Welcome-EventCraft'
+    };
   }, []);
   
   return (
