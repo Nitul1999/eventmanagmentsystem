@@ -8,6 +8,8 @@ export const Mybookingcomponent = ({booking,organizer}) => {
   const [updateform,setupdateform] =useState(false)
   const navigate =useNavigate()
   const userId = localStorage.getItem("User")
+  const [toggleD,settoggleD]=useState(false)
+
 
   const [name,setname] =useState(booking.name)
   const [bookingDate,setbookingDate] =useState(booking.bookingDate)
@@ -26,6 +28,12 @@ export const Mybookingcomponent = ({booking,organizer}) => {
 
   const toggleoff=()=>{
     setupdateform(false)
+  }
+  const toggleDetails =()=>{
+    settoggleD(!toggleD)
+  }
+  const toggleDOff =()=>{
+    settoggleD(false)
   }
  
   const handleupdate =async(e)=>{
@@ -79,6 +87,26 @@ export const Mybookingcomponent = ({booking,organizer}) => {
                           <p>Email: {organizer.email}</p>
                           {/* Add more organizer details as needed */}
                         </div>
+                        <div className="viewmorebtn">
+                          <button onClick={()=>toggleDetails()}>More Details</button>
+                        </div>
+                        <>
+                        {toggleD &&
+                        <div className="all-details-view">
+                          
+                           <div className="popup-content">
+                             <button className="close-btn" onClick={()=>toggleDOff()}>Close</button>
+                              <p>Owner: {organizer.owner}</p>
+                              <p>Address: {organizer.address}</p>
+                              <p>Pin: {organizer.pin}</p>
+                              <p>State: {organizer.state}</p>
+                              <p>Office Location: {organizer.location}</p>
+                              <p>Post Office Address: {organizer.postoffice}</p>
+                           </div>
+                           
+                        </div>
+                        }
+                        </>
                   </div>
                 ) : (
                   <p>Loading organizer details...</p>
@@ -113,6 +141,7 @@ export const Mybookingcomponent = ({booking,organizer}) => {
           </div>
         <>{updateform &&(
           <div className="formupdate">
+            <div className="frompop">
             <form  onSubmit={handleupdate}>
               <label htmlFor="name" >Name</label>
               <input type="text" value={name}  onChange={(e)=>setname(e.target.value)} />
@@ -131,6 +160,7 @@ export const Mybookingcomponent = ({booking,organizer}) => {
               <button type='submit'>submit</button>
               <button  className="cancelupdate" onClick={()=> toggleoff()}>Cancel Updation</button>
             </form>
+            </div>
           </div>
           )}</>
     </div>
