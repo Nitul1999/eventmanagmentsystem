@@ -44,6 +44,20 @@ const geteventuser = async(req,res)=>{
 
 }
 
+//get events by organise id
+const geteventbyorgid =async(req,res)=>{
+    const {id: organiseId} = req.params
+    // if(!mongoose.Types.ObjectId.isValid(organiseId)){
+    //     return res.status(404).json('organise not found')
+    // }
+    const events = await event.find({_id:organiseId});
+        if (!events) {
+            return res.status(404).json({ message: 'Events not found' });
+        }
+        res.status(202).json(events);
+
+}
+
 //create one
 const createevent = async(req,res)=>{
   
@@ -181,5 +195,6 @@ module.exports ={
   updateprice,
   updatecapacity,
   toprating,
-  latest
+  latest,
+  geteventbyorgid
 }

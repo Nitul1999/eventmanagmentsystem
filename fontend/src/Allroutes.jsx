@@ -12,7 +12,7 @@ import { Vieworganise } from './pages/Oranization/Vieworganise';
 import Events from './pages/Myevents/Events';
 import Mybooking from './pages/Mybookings/Mybooking';
 import { Recentbooking } from './pages/Mybookings/Recentbooking';
-
+import { EventsOrganise } from './pages/EventPages/EventsOrganise';
 const Allroutes = () => {
   return (
           <Routes>
@@ -27,6 +27,7 @@ const Allroutes = () => {
                     <Route path='/myevent/:id' element={<Events /> }/>
                     <Route path='/mybooking/:id'element ={ <Mybooking/>}/>
                     <Route path='/viewbooking/:id' element={<Recentbooking/>} />
+                    <Route path='/organise/events/:id' element={<EventsOrganise />} />
          </Routes>
   )
 }

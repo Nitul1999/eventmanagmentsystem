@@ -36,7 +36,7 @@ export const Organisepage = () => {
              
                  {
                   organise && organise.map((organise)=>(
-                 <Link><Organise key={organise._id}  organise={organise} /></Link> 
+                     <Organise key={organise.id}  organise={organise} />
                   ))
                  }
     </div>

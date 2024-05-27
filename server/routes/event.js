@@ -1,5 +1,6 @@
 const express = require('express')
-const { getallevent, createevent, updateevent,singlevent, deletevent, updateprice, updatecapacity, geteventuser, toprating, latest } = require('../controllers/event')
+const { getallevent, createevent, updateevent,singlevent, deletevent, updateprice, updatecapacity, geteventuser, toprating, latest, geteventbyorgid } = require('../controllers/event')
+
 
 const router = express.Router()
 
@@ -23,5 +24,8 @@ router.delete('/delete/:id',deletevent )
 router.patch('/update/price/:id',updateprice)
 //update capacity
 router.patch('/update/capacity/:id',updatecapacity)
+
+//get events by organise Id
+router.get('/organise/events/:id',geteventbyorgid)
 
 module.exports = router
