@@ -8,7 +8,7 @@ import image from"../../assets/homeimgae.png"
 import noticeimag from"../../assets/Biirthday.png"
 import { TopRatingorganise } from '../../componenets/Events/TopRatingorganise'
 import { Homeorganisecomp } from '../../componenets/organise/Homeorganisecomp'
-
+import{Events} from '../../componenets/Events/Events'
 export const Hoempage = () => {
   
   const [events, setevents] = useState(null)
@@ -84,7 +84,7 @@ export const Hoempage = () => {
                   
                     {
                     events && events.map((event)=>
-                      <Link className='linkcard'><TopRatingorganise key={event._id} event={event} /></Link>
+                      <Link className='linkcard'><Events key={event._id} event={event} /></Link>
                     )
                     }
                     </div>
@@ -95,7 +95,7 @@ export const Hoempage = () => {
                   
                     {
                       latestevent && latestevent.map((events)=>
-                      <Link to={`/event/${events._id}`} className='linkcard'><TopRatingorganise key={events._id} event={events} /></Link> 
+                      <Events key={events._id} event={events} /> 
                     )
                     }
                     </div>

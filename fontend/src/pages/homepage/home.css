@@ -241,7 +241,7 @@
 }
 
 /* Infinite Vertical Sliding Animation */
-@keyframes slideUp {
+/* @keyframes slideUp {
     0% {
         transform: translateX(40%);
         
@@ -251,7 +251,7 @@
         transform: translateX(-50%);
        
     }
-}
+} */
 
 /* recent events */
 .recent-events{
@@ -298,7 +298,7 @@
 }
 
 /* Infinite Vertical Sliding Animation */
-@keyframes slideR {
+/* @keyframes slideR {
     0% {
         transform: translateX(-70%);
     }
@@ -306,7 +306,7 @@
     100% {
         transform: translateX(50%);
     }
-}
+} */
 
 .linkcard{
     text-decoration: none;

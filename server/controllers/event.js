@@ -23,7 +23,7 @@ const singlevent = async(req,res)=>{
 const toprating = async(req,res)=>{
      try {
         // Assuming 'event' is your mongoose model
-        const top = await event.find({ rating: 1 });
+        const top = await event.find({ rating: 1 }).limit(4);
         // Send the response back to the client
         res.status(200).json({ success: true, data: top });
     } catch (error) {
@@ -175,7 +175,7 @@ try{
 //latest create date
 const latest = async(req,res)=>{
     try{
-            const latestevent = await event.find().sort({ createdAt: -1 }).limit(3);
+            const latestevent = await event.find().sort({ createdAt: -1 }).limit(4);
             if(!latestevent){
                 res.status(400).json({error:"nothing to show"})
             }
