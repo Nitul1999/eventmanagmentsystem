@@ -12,7 +12,6 @@ const Myeventcomponent = ({myev}) => {
     setshowform(!showform)
   }
   return (
-  
       <div className="card">
           <img src="" alt="Event Image"/>
           <div className="card-content">

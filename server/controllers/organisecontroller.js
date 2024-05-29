@@ -56,12 +56,19 @@ const createorganise = async(req,res)=>{
 //   res.json(organisation);
 // });
 const getorgbyuserid = async(req,res)=>{
-        const { userId } = req.params;
-        const organisation = await organise.findOne(userId);
+    try {
+        const { id:userId } = req.params;
+        console.log("Received userId:", userId);
+        const organisation = await organise.findOne({userId: userId});
         if (!organisation) {
             return res.status(404).json({ message: 'Organisation not found' });
         }
         res.status(202).json(organisation);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+        
 }
 
 

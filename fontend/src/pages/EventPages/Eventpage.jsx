@@ -18,7 +18,6 @@ export const Eventpage = () => {
           }
           const allevents = await response.json();
           setEvents(allevents);
-
             const orgdetails ={}
             for (const event of events){
               const organizerResponse = await fetch(`http://localhost:5000/organise/${event.organiseId}`)

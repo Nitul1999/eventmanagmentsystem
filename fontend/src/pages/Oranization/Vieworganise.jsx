@@ -4,14 +4,16 @@ import {useParams, useNavigate } from 'react-router-dom'
 import './vieworg.css'
 export const Vieworganise = () => {
 
-    const [org, setorg] = useState('')
+    const [org, setorg] = useState(null)
     const userId = localStorage.getItem('User') //get current logIn user 
-    const current = userId;
+    // const current = userId;
     const navigate = useNavigate()
     //get organise details using current user id
     useEffect(() => {
+      
+      console.log(userId)
     async function getOrg() {
-      const response = await fetch(`http://localhost:5000/organise/myorg/${current}`, {
+      const response = await fetch(`http://localhost:5000/organise/myorg/${userId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
         // body: JSON.stringify({ current })
@@ -25,13 +27,16 @@ export const Vieworganise = () => {
       setorg(myorg);
       const orgId = myorg._id
       setorganiseid(orgId)
-
       //  localStorage.setItem('OrganiseId',orgId);
     }
-   
-    getOrg();
-    return;
-  }, [current])
+    if (userId) {
+        getOrg(); // Only fetch if userId is available
+      }
+      // getOrg();
+      return;
+  }, [userId])
+
+  //get organise details using current user id
     const [organiseId,setorganiseid]=useState('')
     const [name, setname]= useState('')
     const [type , settype] = useState('')
@@ -64,6 +69,7 @@ export const Vieworganise = () => {
           console.log("could not submit the form data")
         }
     }
+  if(!org) return( <div> Create Your Organise</div>)
 
   return (
     <div className='org-outer-section'>

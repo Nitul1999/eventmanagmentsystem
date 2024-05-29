@@ -61,13 +61,13 @@ export const Events = ({ event,organizer }) => {
       
       <div className="events-card">
         {organizer ? (
-        <div className="event-details">
-           <p> <strong>Organize Name:</strong>  {organizer.name}</p>
-            <p> <strong>Email:</strong>  {organizer.email}</p>
-        </div>
-      ): (
-                  <p>Loading organizer details...</p>
-          )} 
+            <div className="event-details">
+              <p> <strong>Organize Name:</strong>  {organizer.name}</p>
+                <p> <strong>Email:</strong>  {organizer.email}</p>
+            </div>
+          ): (
+                      <p>Loading organizer details...</p>
+              )} 
         <p>Event Name: <strong> {event.name.toUpperCase()} </strong></p>
         <p>Event Created: {event.createOn}</p>
         <div className="edetails">

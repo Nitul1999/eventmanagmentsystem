@@ -35,8 +35,8 @@ const toprating = async(req,res)=>{
 
 //get event by user id
 const geteventuser = async(req,res)=>{
-        const { userId } = req.params;
-        const events = await event.find(userId);
+        const { id: userId } = req.params;
+        const events = await event.find({userId:userId});
         if (!events) {
             return res.status(404).json({ message: 'Events not found' });
         }

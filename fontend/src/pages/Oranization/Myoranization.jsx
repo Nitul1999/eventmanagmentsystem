@@ -15,8 +15,6 @@ export const Myoranization = () => {
         const [mstate,setmstate] = useState('')
         const [service,setservice] =useState('')
         
-
-
         const userId = localStorage.getItem("User")
         const handlesubmit = async(e)=>{
             
