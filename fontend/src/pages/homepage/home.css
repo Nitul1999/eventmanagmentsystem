@@ -138,8 +138,8 @@
  /* card styles */
  .item-section{
     width: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     overflow: hidden;
  }
 .event-card {
@@ -206,39 +206,50 @@
 .event-card-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     height: 300px;
-    position: relative;
-    margin: 20px;
-     /* Firefox */
+    margin: 3px;
+    overflow-x: auto;
     animation: slideUp 30s linear infinite;
     background-color: transparent;
   
 }
+.event-card-container::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+.event-card-container::-webkit-scrollbar-track {
+    background: rgba(255, 166, 0, 0.502);
+    
+}
+.event-card-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 255, 0.407);
+    border-radius: 20px;
+}
+.cards-items{
+    /* margin-left: 10px; */
+    display: flex;
+}
 
-.event-card-container::before,
+/* .event-card-container::before,
 .event-card-container::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 50px;
-    /* Adjust height for fade effect */
+  
     z-index: 1;
 }
 
 .event-card-container::before {
     top: 0;
-    /* background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0)); */
   
 }
 
 .event-card-container::after {
     bottom: 0;
-    /* background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0)); */
-   
-   
-}
+
+} */
 
 /* Infinite Vertical Sliding Animation */
 /* @keyframes slideUp {
@@ -263,39 +274,50 @@
     padding: 10px 10px 10px 10px;
 }
 .recent-card-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 90%;
-    position: relative;
-    margin: 20px;
-    /* Firefox */
-    height: 300px;
-    animation: slideR 30s linear infinite;
+        display: flex;
+        flex-direction: row;
+        height: 300px;
+        margin: 3px;
+        overflow-x: auto;
+        animation: slideUp 30s linear infinite;
+        background-color: transparent;
+
+}
+.recent-card-container::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.recent-card-container::-webkit-scrollbar-track {
+    background: rgba(0, 128, 255, 0.502);
 
 }
 
-.recent-card-container::before,
+.recent-card-container::-webkit-scrollbar-thumb {
+    background-color: rgba(174, 0, 255, 0.341);
+    border-radius: 20px;
+}
+/* .recent-card-container::before,
 .recent-card-container::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     height: 50px;
-    /* Adjust height for fade effect */
+   
     z-index: 1;
 }
 
 .recent-card-container::before {
     top: 0;
-    /* background: linear-gradient(to bottom, #fff, rgba(255, 255, 255, 0)); */
+   
 
 }
 
 .recent-card-container::after {
     bottom: 0;
-    /* background: linear-gradient(to top, #fff, rgba(255, 255, 255, 0)); */
-}
+    
+} */
 
 /* Infinite Vertical Sliding Animation */
 /* @keyframes slideR {

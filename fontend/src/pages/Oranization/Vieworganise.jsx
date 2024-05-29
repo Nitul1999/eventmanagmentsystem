@@ -26,7 +26,7 @@ export const Vieworganise = () => {
       const orgId = myorg._id
       setorganiseid(orgId)
 
-       localStorage.setItem('OrganiseId',orgId);
+      //  localStorage.setItem('OrganiseId',orgId);
     }
    
     getOrg();
@@ -59,64 +59,74 @@ export const Vieworganise = () => {
             } 
           setIsFormOpen(false);
           // setReloadComponent(!reloadComponent);
-            navigate('/')
+            navigate(`/myevent/${userId}`)
         } catch (error) {
           console.log("could not submit the form data")
         }
     }
 
   return (
-    <>
-    <div className="org-section">
-     
-        <div className="myorg"> 
-           <p>{org.name}</p>
-           <p>{org.email}</p>
-           <p>{org.owner}</p>
-           <p>{org.phone }</p>
-           <p>{org.startdate}</p>
-           <p>{org.location}</p>
-           <p>{org.address}</p>
-           <p>{org.pin}</p>
-           <p>{org.postoffice}</p>
-           <p>{org.state}</p>
-           <p>{org.service}</p>
-           <p>{org.status}</p>
-           <p>{org.rating}</p>
-        </div>
-          <> {isFormOpen && (
-                             <div className="form-popup">
-                                <div className="form-container">
-                                  <form onSubmit={handlesubmit}>
-                                    <h2>Add Event details</h2>
-                                    <label>
-                                      <span>Event name:</span>
-                                      <input type="text" placeholder="Event Name" onChange={(e)=>setname(e.target.value)} value={name}  />
-                                    </label>
-                                    <label>
-                                      <span>Event Type:</span>
-                                      <input type="text" placeholder="Type" onChange={(e)=>settype(e.target.value)} value={type} />
-                                    </label>
-                                    <label>
-                                      <span> Person Capacity:</span>
-                                      <input type="number" placeholder="Capacity"  onChange={(e)=>setcapacity(e.target.value)} value={capacity}/>
-                                    </label>
-                                    <label>
-                                      <span>Price:</span>
-                                      <input type="number" placeholder="price" onChange={(e)=>setprice(e.target.value)} value={price} />
-                                    </label>
-                                    <button type="submit">Save</button>
-                                    <button type="button" onClick={() => toggleForm()}>Cancel</button>
-                                  </form>
+    <div className='org-outer-section'>
+      <div className="org-section">
+      
+          <div className="myorg"> 
+            <h1>My Organisations</h1>
+              <div className="heading-org">
+                <p> <strong>Organization Name:</strong>  {org.name}</p>
+                <p> <strong>Email:</strong> {org.email}</p>
+              </div>
+              <div className="heading-org">
+                <p> <strong>Owner Name:</strong>  {org.owner}</p>
+                <p> <strong>Contact Number: </strong> {org.phone }</p>
+              </div>
+               
+              <div className="org-details">
+                <p>{org.startdate}</p>
+                <p>{org.location}</p>
+                <p>{org.address}</p>
+                <p>{org.pin}</p>
+                <p>{org.postoffice}</p>
+                <p>{org.state}</p>
+                <p>{org.service}</p>
+                <p>{org.status}</p>
+                <p>{org.rating}</p>
+              </div>
+            
+          </div>
+            <> {isFormOpen && (
+                              <div className="form-popup">
+                                  <div className="form-container">
+                                    <form onSubmit={handlesubmit}>
+                                      <h2>Add Event details</h2>
+                                      <label>
+                                        <span>Event name:</span>
+                                        <input type="text" placeholder="Event Name" onChange={(e)=>setname(e.target.value)} value={name}  />
+                                      </label>
+                                      <label>
+                                        <span>Event Type:</span>
+                                        <input type="text" placeholder="Type" onChange={(e)=>settype(e.target.value)} value={type} />
+                                      </label>
+                                      <label>
+                                        <span> Person Capacity:</span>
+                                        <input type="number" placeholder="Capacity"  onChange={(e)=>setcapacity(e.target.value)} value={capacity}/>
+                                      </label>
+                                      <label>
+                                        <span>Price:</span>
+                                        <input type="number" placeholder="price" onChange={(e)=>setprice(e.target.value)} value={price} />
+                                      </label>
+                                      <button type="submit">Save</button>
+                                      <button type="button" onClick={() => toggleForm()}>Cancel</button>
+                                    </form>
+                                  </div>
                                 </div>
-                              </div>
-                            )}
-                </>
-        <div className="items">
-          <button onClick={() => toggleForm()} >Add Event</button>
-          <button>view Events</button>
-        </div>
+                              )}
+            </>
+                  <div className="items">
+                    <button onClick={() => toggleForm()} >Add Event</button>
+                    <button>view Events</button>
+                    <button>Update Org Details</button>
+                  </div>
       </div>
-    </>
+    </div>
   )
 }

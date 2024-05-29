@@ -81,23 +81,25 @@ export const Hoempage = () => {
               <div className="top-events">
                     <h2>Top Events</h2>
                     <div className="event-card-container">
-                  
-                    {
-                    events && events.map((event)=>
-                      <Link className='linkcard'><Events key={event._id} event={event} /></Link>
-                    )
-                    }
+                      <div className="cards-items">
+                        {
+                        events && events.map((event)=>
+                          <Link className='linkcard'><Events key={event._id} event={event} /></Link>
+                        )
+                        }
+                        </div>
                     </div>
               </div>
               <div className="recent-events">
                 <h2>Latest Events</h2>
                     <div className="recent-card-container">
-                  
-                    {
-                      latestevent && latestevent.map((events)=>
-                      <Events key={events._id} event={events} /> 
-                    )
-                    }
+                      <div className="cards-items">
+                        {
+                          latestevent && latestevent.map((events)=>
+                          <Events key={events._id} event={events} /> 
+                        )
+                        }
+                      </div>
                     </div>
               </div>
             </div>
