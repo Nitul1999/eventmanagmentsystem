@@ -5,7 +5,7 @@ import { Link, useNavigate} from "react-router-dom";
 import "./style.css";
 
 
-export const Events = ({ event }) => {
+export const Events = ({ event,organizer }) => {
    const [showPopup, setShowPopup] = useState(false);
    const [showbookingform,setshowbookingform] = useState(false)
    const navigate = useNavigate()
@@ -58,7 +58,16 @@ export const Events = ({ event }) => {
   }
   return (
     <div className="event-container">
+      
       <div className="events-card">
+        {organizer ? (
+        <div className="event-details">
+           <p> <strong>Organize Name:</strong>  {organizer.name}</p>
+            <p> <strong>Email:</strong>  {organizer.email}</p>
+        </div>
+      ): (
+                  <p>Loading organizer details...</p>
+          )} 
         <p>Event Name: <strong> {event.name.toUpperCase()} </strong></p>
         <p>Event Created: {event.createOn}</p>
         <div className="edetails">

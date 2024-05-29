@@ -4,24 +4,41 @@ import './eventpages.css'
 export const Eventpage = () => {
 
      const [events, setEvents] = useState(null);
-
+      const [organizers, setOrganizers] = useState({});
   useEffect(() => {
-    async function getEventRecords() {
-      const response = await fetch(`http://localhost:5000/events`);
-      if (!response.ok) {
-        const message = `An error occurred: ${response.statusText}`;
-        console.error(message);
-        return;
-      }
-      const allevents = await response.json();
-      setEvents(allevents);
-    }
+   
+       async function getEventRecords() {
+        try {
+          const response = await fetch(`http://localhost:5000/events`);
+          if (!response.ok) {
+            const message = `An error occurred: ${response.statusText}`;
+            console.error(message);
+            return;
+          }
+          const allevents = await response.json();
+          setEvents(allevents);
 
+            const orgdetails ={}
+            for (const event of events){
+              const organizerResponse = await fetch(`http://localhost:5000/organise/${event.organiseId}`)
+              if (organizerResponse.ok) {
+              const organizer = await organizerResponse.json();
+              orgdetails[event.organiseId] = organizer;
+            } else {
+              console.error(`Failed to fetch organizer details for ID ${event.organiseId}`);
+            }
+            }
+        setOrganizers(orgdetails);
+        }
+        catch (error) {
+           console.error('Error fetching data:');
+        }
+      }
     getEventRecords();
-    document.title='EventCraft-Events'
-    return()=>{
-      document.title ='Welcome-EventCraft'
-    };
+            document.title='EventCraft-Events'
+            return()=>{
+              document.title ='Welcome-EventCraft'
+            };
   }, []);
   
   return (
@@ -32,7 +49,7 @@ export const Eventpage = () => {
             <h2>Events</h2>
             <div className="events">
               {events &&
-                events.map((Event) => <Events key={Event._id} event={Event} />)}
+                events.map((Event) => <Events key={Event._id} event={Event} organizer={organizers[Event.organiseId]} />)}
             </div>
           </div>
         </div>
