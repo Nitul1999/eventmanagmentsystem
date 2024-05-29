@@ -1,6 +1,7 @@
 import React,{ useState, useEffect }  from 'react'
 import { Events } from '../../componenets/Events/Events';
 import './eventpages.css'
+import { colors } from '@mui/material';
 export const Eventpage = () => {
 
      const [events, setEvents] = useState(null);
@@ -53,7 +54,7 @@ export const Eventpage = () => {
             </div>
           </div>
         </div>
-      </div>
+    </div>
     </>
   )
 }
