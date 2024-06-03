@@ -12,19 +12,19 @@ const singup = async(req,res)=>{
     try{
         const existinguser = await user.findOne({email}) 
         if(existinguser){
-                 res.status(201).json({msg: 'email already registered'})
+                return res.status(201).json({msg: 'email already registered'})
         }
     
         const hashpassword = await bcrpyt.hash( password, 12)
         const newuser = await user.create({ name, email, password: hashpassword, usertype})
         const token = jwt.sign({ email: newuser.email, id:newuser._id}, secretKey , { expiresIn: '1h'});
         if(!newuser){
-              res.status(404).json({msg:'user not found...'})
+              return res.status(404).json({msg:'user not found...'})
         }
         res.status(200).json({ result: newuser, token })
 
     }catch(error){
-            res.status(500).json(error)
+            return res.status(500).json(error)
     }
 }
 
@@ -39,18 +39,20 @@ const login = async(req,res)=>{
     try{
         const existinguser = await user.findOne({email})
         if(!existinguser){
-            res.status(404).json({msg: 'email not registered'})
+           return res.status(404).json({msg: 'email not registered'})
             }
        const validpassword = await bcrpyt.compare(password, existinguser.password)
 
         if(!validpassword){
-             res.status(400).json({msg: 'Invalid credentials'})
+            return res.status(400).json({msg: 'Invalid password'})
         }
         const token = jwt.sign({ email: existinguser.email, id:existinguser._id}, secretKey , { expiresIn: '1h'});
         res.status(200).json( { result: existinguser, token, usertype: existinguser.usertype,id:existinguser._id})
 
     }catch(error){
-           res.status(400).json({msg: "Something went wrong..."})
+         return res.status(400).json({msg: "Something went wrong..."})
+        //   console.error('Login error:', error.message); // Log the error message
+        //   setErrorMessage(error.message); // Update the error message state variable
     }
 }
 

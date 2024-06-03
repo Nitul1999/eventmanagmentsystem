@@ -56,12 +56,13 @@ export const Login = () => {
 
     } catch (err) {
       console.error(err);
-      alert('Invalid email or password');
+      // alert('Invalid email or password');
     }
   }
 
   return (
     <div className='container'>
+      
       <div className="login">
         <form onSubmit={handleSubmit} >
           <label htmlFor="email">Email </label>

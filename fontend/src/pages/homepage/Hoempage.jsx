@@ -15,6 +15,7 @@ export const Hoempage = () => {
   const [latestevent,setlatestevent] =useState(null)
   const [toporg , settoporg] =useState(null)
   const [organizers, setOrganizers] = useState({});
+  
    useEffect(() => {
       async function getRecords() {
         try {
@@ -176,8 +177,6 @@ export const Hoempage = () => {
                   </div>
               </div>
              </div>
-
-
 
             <footer></footer>
         </>

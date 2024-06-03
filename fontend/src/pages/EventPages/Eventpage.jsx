@@ -5,7 +5,9 @@ import { colors } from '@mui/material';
 export const Eventpage = () => {
 
      const [events, setEvents] = useState(null);
-      const [organizers, setOrganizers] = useState({});
+     const [organizers, setOrganizers] = useState({});
+
+
   useEffect(() => {
    
        async function getEventRecords() {
@@ -18,6 +20,7 @@ export const Eventpage = () => {
           }
           const allevents = await response.json();
           setEvents(allevents);
+          
             const orgdetails ={}
             for (const event of events){
               const organizerResponse = await fetch(`http://localhost:5000/organise/${event.organiseId}`)
@@ -29,6 +32,7 @@ export const Eventpage = () => {
             }
             }
         setOrganizers(orgdetails);
+        
         }
         catch (error) {
            console.error('Error fetching data:');

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const event = require('../model/eventsmodel')
+const { colors } = require('@mui/material')
 
 
 //get all
@@ -70,12 +71,12 @@ const createevent = async(req,res)=>{
             ...posteventdata
         })
         if(!postevent){
-            res.status(500).json({msg: ' Server Error'})
+           return  res.status(500).json({msg: ' Server Error'})
         }
         res.status(201).json(postevent)
 
     }catch(error){
-        res.status(500).json({error:error.message})
+       return res.status(500).json({error:error.message})
 
     }
 }
@@ -87,13 +88,13 @@ const updateevent = async(req,res) =>{
           const {id:_id} = req.params
 
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json({error: " not found"})
+        return res.status(404).json({error: " not found"})
     }
     const update = await event.findByIdAndUpdate(_id,{$set:{ ...updatesdata}
        
     })
     if(!update){
-        res.status(500).json({error:" fail to update"})
+        return res.status(500).json({error:" fail to update"})
     }
     res.status(201).json(update)
 
@@ -113,13 +114,12 @@ const updatnoofcomment = async (_id, noofcomment) => {
 //delete a event
 const deletevent =async(req,res)=>{
     const {id:_id}= req.params
-
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json({error:"not a vaild id"})
+       return res.status(404).json({error:"not a vaild id"})
     }
-    const deleteone = await event.findByIdAndDelete(_id)
+    const deleteone = await event.findByIdAndDelete({_id})
     if(!deleteone){
-        res.status(404).json({error:"not deleted"})
+       return res.status(404).json({error:"not deleted"})
     }
     res.status(200).json(deleteone)
 }
@@ -130,7 +130,7 @@ const updateprice = async(req,res)=>{
     const { index, value} = req.body
 try{ 
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json({error:"not a vaild id"})
+       return res.status(404).json({error:"not a vaild id"})
     }
 
     const update = {}  ;
@@ -139,12 +139,12 @@ try{
     const data = await event.findByIdAndUpdate( {_id},{$set:update })
 
     if(!data){
-        res.status(400).json({error:"fail to update"})
+      return  res.status(400).json({error:"fail to update"})
     }
     res.status(200).json(data)
 
    }catch(error){
-     res.status(400).json(error)
+    return res.status(400).json(error)
    }
 
 }
@@ -154,7 +154,7 @@ const updatecapacity = async(req,res)=>{
      const { index, value} = req.body
 try{ 
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json({error:"not a vaild id"})
+       return res.status(404).json({error:"not a vaild id"})
     }
 
     const update = {}  ;
@@ -163,12 +163,12 @@ try{
     const data = await event.findByIdAndUpdate( {_id},{$set:update })
 
     if(!data){
-        res.status(400).json({error:"fail to update"})
+       return res.status(400).json({error:"fail to update"})
     }
     res.status(200).json(data)
 
    }catch(error){
-     res.status(400).json(error)
+     return res.status(400).json(error)
    }
 }
 
@@ -177,11 +177,11 @@ const latest = async(req,res)=>{
     try{
             const latestevent = await event.find().sort({ createdAt: -1 }).limit(4);
             if(!latestevent){
-                res.status(400).json({error:"nothing to show"})
+               return res.status(400).json({error:"nothing to show"})
             }
             res.status(200).json(latestevent)
     }catch(error){
-         res.status(400).json(error)
+        return res.status(400).json(error)
     }
 }
 

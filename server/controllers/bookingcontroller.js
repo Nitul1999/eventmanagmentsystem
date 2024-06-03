@@ -10,12 +10,12 @@ const getsinglebooking = async(req,res)=>{
     const {id:_id} = req.params
 
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json({error:" booking not found"})
+        return res.status(404).json({error:" booking not found"})
 
     }
     const getdata= await booking.findById( _id )
     if(!getdata){
-        res.status(500).json({error:" data not found"})
+       return res.status(500).json({error:" data not found"})
     }
     res.status(200).json(getdata)
 }
@@ -27,7 +27,7 @@ const createbooking = async(req,res)=>{
     const createbook = await booking.create({...postbookingdata})
     
   if(!createbook){
-    res.status(500).json({error: "booking not create"})
+    return res.status(500).json({error: "booking not create"})
   }
   res.status(201).json(createbook)
 
@@ -38,8 +38,8 @@ const getmybooking =async(req,res)=>{
     const {id:userId} = req.params
     const mybooking = await booking.find({userId})
      if(!mybooking){
-    res.status(500).json({error: "booking not found"})
-  }
+       return res.status(500).json({error: "booking not found"})
+     }
   res.status(201).json(mybooking)
 }
 //delete a booking
@@ -48,7 +48,7 @@ const deletebooking = async(req,res)=>{
     const { id:_id} = req.params
 
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json("booking not found")
+        return res.status(404).json("booking not found")
     }
     const  removeData = await booking.findOneAndDelete({_id})
     if (!removeData) {
@@ -63,11 +63,11 @@ const updatebooking = async(req,res)=> {
     const updates = req.body
     
     if(!mongoose.Types.ObjectId.isValid(_id)){
-        res.status(404).json({error: "booking details not found"})
+       return res.status(404).json({error: "booking details not found"})
     }
     const bookingData =await booking.findByIdAndUpdate(_id,{$set:{...updates}})  
     if(!bookingData){
-        res.status(500).json({error:'Error updating the booking'})
+        return res.status(500).json({error:'Error updating the booking'})
     }
     res.status(201).json(bookingData)
 }

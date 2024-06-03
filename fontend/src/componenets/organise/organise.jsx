@@ -21,7 +21,7 @@ export const Organise = ({organise}) => {
             <p>Email Id: {organise.email}</p>
             <div className="details">
               <p> Services: {organise.service} </p>
-             
+              <p>Status: {organise.status ? 'Active' : 'Inactive'}</p>
             </div>
             <StarRating rating={organise.rating} />
             <div className="more-btn-organise">

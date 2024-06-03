@@ -11,12 +11,30 @@ const Myeventcomponent = ({myev}) => {
   const toggleform=()=>{
     setshowform(!showform)
   }
+  const event = myev._id
+
+  const deleteevent=async()=>{
+    console.log(event)
+    try {
+      const response = await fetch(`http://localhost:5000/events/delete/${event}`,{
+       method: 'DELETE',
+      });
+       const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error); // Throw error with the message from the backend
+        }
+      window.location.reload()
+      console.log("event delete successfuly")
+    } catch (error) {
+      
+    }
+  }
   return (
       <div className="card">
           <img src="" alt="Event Image"/>
           <div className="card-content">
               <h2>Event Name: {myev.name}</h2> 
-             
               <p>Type: {myev.type}</p>
               <p className="price">Price: {myev.price}</p>
               <p className="capacity">Capacity: {myev.capacity}</p>
@@ -26,7 +44,8 @@ const Myeventcomponent = ({myev}) => {
               <p className="total-booking">Total Bookings: {myev.totalbooking}</p>
               <p className="no-of-comments">Number of Comments: {myev.noofcomment}</p>
                {/* <Link to={`/viewbooking/${myev._id}`}>View Booking</Link> */}
-               <button onClick={()=>toggleform()}>Update</button>
+               <button onClick={()=>toggleform()}>Update Event</button>
+               <button onClick={()=>deleteevent()}>Delete Event</button>
               <div className="comments">
                   <h3>Comments:</h3>
                   <div className="comment">

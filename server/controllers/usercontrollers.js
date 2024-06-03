@@ -1,8 +1,6 @@
 const mongoose = require('mongoose')
 const user = require('../model/usermodel')
 
-
-
 // get all users
 
 const alluser = async(req,res) =>{
@@ -16,12 +14,12 @@ const alluser = async(req,res) =>{
 const getsingleuser = async(req,res)=>{
     const {id} = req.params
     if(!mongoose.Types.ObjectId.isValid(id)){
-        res.status(404).json({error: 'not vaild id'})
+        return res.status(404).json({error: 'not vaild id'})
     }
     const alluser = await user.findById(id)
 
     if(!alluser){
-        res.status(404).json({error: 'user not found'})
+       return res.status(404).json({error: 'user not found'})
     }
 
     res.status(201).json(alluser)
@@ -33,15 +31,15 @@ const updateuser = async(req,res)=>{
     const { id} = req.params
     const data= req.body
      if(!mongoose.Types.ObjectId.isValid(id)){
-        res.status(404).json({error: 'not vaild id'})
+       return res.status(404).json({error: 'not vaild id'})
     }
    const update = await user.findOneAndUpdate({_id: id},{ $set:{...data}
     
    })
 
-   if(!update){
-    res.status(404).json({error: " not updated"})
-   }
+    if(!update){
+       return res.status(404).json({error: " not updated"})
+    }
 
    res.status(201).json(update)
 
@@ -53,11 +51,11 @@ const updateuser = async(req,res)=>{
 const deleteuser = async(req,res)=>{
     const {id} = req.params
      if(!mongoose.Types.ObjectId.isValid(id)){
-        res.status(404).json({error: 'not vaild id'})
+       return res.status(404).json({error: 'not vaild id'})
      }
   const deleteuser = await user.findOneAndDelete({_id: id})
      if(!deleteuser){
-        res.status(404).json({msg: ' not found'})
+       return res.status(404).json({msg: ' not found'})
      }
 
      res.status(201).json(deleteuser)
