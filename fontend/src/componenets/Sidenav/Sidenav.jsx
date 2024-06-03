@@ -62,9 +62,10 @@ export const Sidenav = () => {
           {currentuser ==="Organiser" &&
               <li><Link to ={`/myevent/${user}`}>My Events</Link></li>
           }
-           {/* {currentuser ==="Organiser" && 
+           {currentuser ==="Organiser" && 
             <li> <Link to={`/viewbooking`}>View Booking</Link></li>
-          }
+          } 
+          {/*
           {currentuser ==="Organiser" && 
             <li><Link href="#">All Booking</Link></li>
           }

@@ -122,6 +122,7 @@ export const Mybookingcomponent = ({booking,organizer}) => {
                 <p><strong>Organise ID:</strong> {booking.organiseId}</p> */}
                 <p><strong>Event Date:</strong> {booking.bookingDate}</p>
                 <p><strong>Booking Date:</strong> {booking.createdAt}</p>
+                <p><strong>Total Person:</strong> {booking.capacity}</p>
                 <p><strong>Number of Days:</strong> {booking.noofday}</p>
                 <p><strong>Location:</strong> {booking.location}</p>
                 <p><strong>Pin:</strong> {booking.pin}</p>

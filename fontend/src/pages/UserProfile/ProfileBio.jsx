@@ -47,14 +47,17 @@ const styles = {
   userProfileEmail: {
     fontSize: '16px',
     marginBottom: '5px',
+    color:'black'
   },
   userProfilePhone: {
     fontSize: '16px',
     marginBottom: '5px',
+    color:'black'
   },
   userProfileLocation: {
     fontSize: '16px',
     marginBottom: '5px',
+    color:'black'
   },
   editButton: {
     padding: '10px 20px',

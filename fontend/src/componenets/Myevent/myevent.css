@@ -21,7 +21,12 @@
 .card-content {
     padding: 20px;
 }
-
+.card-content button{
+    margin: 10px;
+    padding: 6px;
+    background: transparent;
+    border: 1px solid blue;
+}
 .card-content h2 {
     margin: 0 0 10px;
     font-size: 24px;
@@ -60,4 +65,7 @@
 
 .comment small {
     color: #999;
+}
+.myeventbtn {
+    margin: 10px;
 }

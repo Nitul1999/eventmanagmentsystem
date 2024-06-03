@@ -36,13 +36,17 @@ export const Vieworganise = () => {
 
   //get organise details using current user id
     const [organiseId,setorganiseid]=useState('')
+
+
     const [name, setname]= useState('')
     const [type , settype] = useState('')
-    const [capacity,setcapacity] = useState('')
-    const [price,setprice] = useState('')
+    const [capacity,setcapacity] = useState([])
+    const [price,setprice] = useState([])
+
+
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [updateopen,setupdateopen] = useState(false)
-
+    
     // update data
     const [orgname,setorgname] =useState(org.name)
     const [orgemail, setorgemail]=useState('')
@@ -138,6 +142,8 @@ export const Vieworganise = () => {
             console.error("Could not submit the form data:", error);
           }
         };
+
+        //add seri
 const [newService, setNewService] = useState('');
 
   const addService = () => {
@@ -150,6 +156,35 @@ const [newService, setNewService] = useState('');
   const removeService = (index) => {
     setorgservice(orgservice.filter((_, i) => i !== index));
   };
+
+  //add capacity
+  const [newCapacity, setnewcapacity] =useState('')
+
+  const addCapacity =()=>{
+    if(newCapacity){
+      setcapacity([...capacity,newCapacity]);
+      setnewcapacity('');
+    }
+  }
+  const removeCapacity=(index)=>{
+    setcapacity(capacity.filter((_,i)=>i !==index));
+  }
+   //add price
+  const [newPrice, setNewPrice] = useState('');
+
+  const addPrice = () => {
+    if (newPrice) {
+      setprice([...price, newPrice]);
+      setNewPrice('');
+    }
+  };
+
+  const removeprice = (index) => {
+    setprice(price.filter((_, i) => i !== index));
+  };
+
+
+
 
   if(!org) return( <div> Create Your Organise</div>)
 
@@ -186,22 +221,44 @@ const [newService, setNewService] = useState('');
                                   <div className="form-container">
                                     <form onSubmit={handlesubmit}>
                                       <h2>Add Event details</h2>
-                                      <label>
-                                        <span>Event name:</span>
+                                      <label>Event name:</label>
                                         <input type="text" placeholder="Event Name" onChange={(e)=>setname(e.target.value)} value={name}required  />
-                                      </label>
+                                      
                                       <label>
-                                        <span>Event Type:</span>
+                                        Event Type: </label>
                                         <input type="text" placeholder="Type" onChange={(e)=>settype(e.target.value)} value={type} required/>
-                                      </label>
-                                      <label>
-                                        <span> Person Capacity:</span>
-                                        <input type="number" placeholder="Capacity"  onChange={(e)=>setcapacity(e.target.value)} value={capacity} required/>
-                                      </label>
-                                      <label>
-                                        <span>Price:</span>
-                                        <input type="number" placeholder="price" onChange={(e)=>setprice(e.target.value)} value={price} />
-                                      </label>
+                                
+                                       <label htmlFor="capacity">Event Capacity:</label>
+                                      <div>
+                                          <input type="number" placeholder='add capacity' onChange={(e)=>setnewcapacity(e.target.value)} />
+                                          <button type='button' className='add-service' onClick={addCapacity}> Add Capacity</button>
+                                      </div>
+                                      <ol>
+                                        {capacity.map((capacity,index)=>
+                                            <li key={index}>
+                                              {capacity}
+                                              <button type='button' className='remove-service' onClick={()=> removeCapacity(index)}>X</button>
+                                            </li>
+                                        )}
+                                      </ol>
+                                       <label htmlFor="price">Price</label>
+                                      <div>
+                                          <input
+                                            type="text"
+                                            placeholder="Add a Price"
+                                            value={newPrice}
+                                            onChange={(e) => setNewPrice(e.target.value)}
+                                          />
+                                          <button type="button" className='add-service' onClick={addPrice}>Add Service</button>
+                                        </div>
+                                        <ul>
+                                          {price.map((price, index) => (
+                                            <li key={index}>
+                                              {price}
+                                              <button type="button" className="remove-service" onClick={() => removeprice(index)}>X</button>
+                                            </li>
+                                          ))}
+                                        </ul>
                                       <button type="submit">Save</button>
                                       <button type="button" onClick={() => toggleForm()}>Cancel</button>
                                     </form>

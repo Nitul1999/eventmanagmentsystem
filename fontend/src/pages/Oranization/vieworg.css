@@ -28,12 +28,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
-    width: 70%;
+    z-index: 100;
+    width: 60%;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
+    overflow: auto;
 }
 .form-popup button~button{
     width: 100%;
@@ -43,15 +44,16 @@
 .form-container {
     display: flex;
     flex-direction: column;
+   
 }
 
 .form-container label {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .form-container input {
-    padding: 8px;
-    margin-top: 5px;
+    padding: 5px;
+    margin-top: 3px;
 }
 
 .form-container button {

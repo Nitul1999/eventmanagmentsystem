@@ -15,6 +15,7 @@ const bookingmodel = new schema({
     email:{type:String},
     panno:{type:String},
     bookingstatus:{type: Boolean},
+    capacity:{type:Number},
     Status: {
       type: String,
       enum: ["Pending", "Accepted", "Rejected"],

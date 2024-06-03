@@ -8,7 +8,7 @@ export const Homeorganisecomp = ({org}) => {
             <div className="text">
                <p>Orgnaise-Name : {org.name}</p>
                <p>Own By : {org.owner} </p>
-        
+               <p>Status: {org.status ? 'Active' : 'Inactive'}</p>
             </div>
             <div className="image-section">
               <img src={imagemy} alt="img" className="img" />
