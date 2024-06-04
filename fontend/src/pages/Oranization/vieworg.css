@@ -23,18 +23,22 @@
     font-size: 20px;
 }
 /* Form styles */
+.form-pop{
+    width: 500px;
+    height: 500px;
+}
 .form-popup {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 100;
+    z-index: 5000;
     width: 60%;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
     border-radius: 8px;
-    overflow: auto;
+   
 }
 .form-popup button~button{
     width: 100%;
@@ -44,7 +48,7 @@
 .form-container {
     display: flex;
     flex-direction: column;
-   
+    overflow-y: auto;
 }
 
 .form-container label {

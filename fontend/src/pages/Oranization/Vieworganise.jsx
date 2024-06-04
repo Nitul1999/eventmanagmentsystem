@@ -186,8 +186,10 @@ const [newService, setNewService] = useState('');
 
 
 
-  if(!org) return( <div> Create Your Organise</div>)
-
+  if(!org) return( <div>Loading...</div>)
+if (org.length === 0) {
+          return (<div> Create Your Organise</div>);
+        }
   return (
     <div className='org-outer-section'>
       <div className="org-section">
@@ -272,63 +274,65 @@ const [newService, setNewService] = useState('');
                     <button onClick={()=>toggleupdateform()}> Update Org Details</button>
                   </div>
                   <>
-                  {updateopen &&(  <div className="form-popup-update-details">
-                                  <div className="form-container-update-details">
-                                    <form onSubmit={handleorgupsubmit}>
-                                      <h2>Update Organize Details</h2>
-                                      <label>Oganize Name  </label>
-                                        <input type="text"onChange={(e)=>setorgname(e.target.value)} value={orgname}  />
+                  <div className="form-pop">
+                    {updateopen &&(  <div className="form-popup-update-details">
+                                    <div className="form-container-update-details">
+                                      <form onSubmit={handleorgupsubmit}>
+                                        <h2>Update Organize Details</h2>
+                                        <label>Oganize Name  </label>
+                                          <input type="text"onChange={(e)=>setorgname(e.target.value)} value={orgname}  />
+                                      
+                                        <label> Organize Email  </label>
+                                          <input type="text"  onChange={(e)=>setorgemail(e.target.value)} value={orgemail} />
+                                          <label> Owner  </label>
+                                          <input type="text"  onChange={(e)=>setorgowner(e.target.value)} value={orgowner} />
                                     
-                                      <label> Organize Email  </label>
-                                        <input type="text"  onChange={(e)=>setorgemail(e.target.value)} value={orgemail} />
-                                        <label> Owner  </label>
-                                        <input type="text"  onChange={(e)=>setorgowner(e.target.value)} value={orgowner} />
-                                   
-                                      <label>Contact No </label>
-                                      <input type="number"  onChange={(e)=>setorgcontact(e.target.value)} value={orgcontact}/>
-                                     
-                                      <label>Address</label>
-                                      <input type="text" onChange={(e)=>setorgaddress(e.target.value)} value={orgaddress} />
-                                      <label>Location</label>
-                                      <input type="text"  onChange={(e)=>setorglocation(e.target.value)} value={orglocation} />
-                                      <label>PIN</label>
-                                      <input type="number"  onChange={(e)=>setorgpin(e.target.value)} value={orgpin} />
-                                      <label>Post Office</label>
-                                      <input type="text"  onChange={(e)=>setorgpostoffice(e.target.value)} value={orgpostoffice} />
-                                      <label>State</label>
-                                      <input type="text"  onChange={(e)=>setorgstate(e.target.value)} value={orgstate} />
-                                      {/* <label>Service</label>
-                                      <input type="text"  onChange={(e)=>setorgservice(e.target.value)} value={orgservice} /> */}
-                                       {/* Services Input */}
-                                        <label>Service</label>
-                                        <div>
-                                          <input
-                                            type="text"
-                                            placeholder="Add a service"
-                                            value={newService}
-                                            onChange={(e) => setNewService(e.target.value)}
-                                          />
-                                          <button type="button" className='add-service' onClick={addService}>Add Service</button>
-                                        </div>
-                                        <ul>
-                                          {orgservice.map((service, index) => (
-                                            <li key={index}>
-                                              {service}
-                                              <button type="button" className="remove-service" onClick={() => removeService(index)}>X</button>
-                                            </li>
-                                          ))}
-                                        </ul>
-                                      <label>Status</label>
-                                       <select className='selectbtn' onChange={(e) => setorgstatus(e.target.value === 'true')} value={orgstatus}>
-                                          <option value={true}>Active</option>
-                                          <option value={false}>Inactive</option>
-                                        </select>
-                          
-                                      <button type="submit">Save</button>
-                                      <button className="update-cancel-org-btn"type="button" onClick={() => toggleupdateform()}>Cancel</button>
-                                    </form>
-                                  </div>
-                                </div>)}
+                                        <label>Contact No </label>
+                                        <input type="number"  onChange={(e)=>setorgcontact(e.target.value)} value={orgcontact}/>
+                                      
+                                        <label>Address</label>
+                                        <input type="text" onChange={(e)=>setorgaddress(e.target.value)} value={orgaddress} />
+                                        <label>Location</label>
+                                        <input type="text"  onChange={(e)=>setorglocation(e.target.value)} value={orglocation} />
+                                        <label>PIN</label>
+                                        <input type="number"  onChange={(e)=>setorgpin(e.target.value)} value={orgpin} />
+                                        <label>Post Office</label>
+                                        <input type="text"  onChange={(e)=>setorgpostoffice(e.target.value)} value={orgpostoffice} />
+                                        <label>State</label>
+                                        <input type="text"  onChange={(e)=>setorgstate(e.target.value)} value={orgstate} />
+                                        {/* <label>Service</label>
+                                        <input type="text"  onChange={(e)=>setorgservice(e.target.value)} value={orgservice} /> */}
+                                        {/* Services Input */}
+                                          <label>Service</label>
+                                          <div>
+                                            <input
+                                              type="text"
+                                              placeholder="Add a service"
+                                              value={newService}
+                                              onChange={(e) => setNewService(e.target.value)}
+                                            />
+                                            <button type="button" className='add-service' onClick={addService}>Add Service</button>
+                                          </div>
+                                          <ul>
+                                            {orgservice.map((service, index) => (
+                                              <li key={index}>
+                                                {service}
+                                                <button type="button" className="remove-service" onClick={() => removeService(index)}>X</button>
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        <label>Status</label>
+                                        <select className='selectbtn' onChange={(e) => setorgstatus(e.target.value === 'true')} value={orgstatus}>
+                                            <option value={true}>Active</option>
+                                            <option value={false}>Inactive</option>
+                                          </select>
+                            
+                                        <button type="submit">Save</button>
+                                        <button className="update-cancel-org-btn"type="button" onClick={() => toggleupdateform()}>Cancel</button>
+                                      </form>
+                                    </div>
+                                  </div>)}
+                   </div>
                   </>
       </div>
     </div>

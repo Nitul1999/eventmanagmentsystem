@@ -59,7 +59,6 @@ export const Events = ({ event,organizer }) => {
   }
   return (
     <div className="event-container">
-      
       <div className="events-card">
         {organizer ? (
             <div className="event-details">
@@ -136,7 +135,7 @@ export const Events = ({ event,organizer }) => {
                     <label htmlFor="name">Your Name</label>
                     <input type="text" placeholder='Enter your name' required onChange={(e)=>setname(e.target.value)} value={name}/>
                     <label htmlFor="capacity">Total Person</label>
-                    <input type="number" placeholder='' required onChange={(e)=>setcapacity(e.target.value)} value={capacity} />
+                    <input type="number" placeholder='Number Of Person to be attend' required onChange={(e)=>setcapacity(e.target.value)} value={capacity} />
                     <label htmlFor="date">Pick a date</label>
                     <input type="date" required onChange={(e)=>setbookingDate(e.target.value)} value={bookingDate}/>
                     <label htmlFor="duration">Number of Days</label>

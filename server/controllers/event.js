@@ -48,10 +48,10 @@ const geteventuser = async(req,res)=>{
 //get events by organise id
 const geteventbyorgid =async(req,res)=>{
     const {id: organiseId} = req.params
-    // if(!mongoose.Types.ObjectId.isValid(organiseId)){
-    //     return res.status(404).json('organise not found')
-    // }
-    const events = await event.find({_id:organiseId});
+    if(!mongoose.Types.ObjectId.isValid(organiseId)){
+        return res.status(404).json('organise not found')
+    }
+    const events = await event.find({organiseId});
         if (!events) {
             return res.status(404).json({ message: 'Events not found' });
         }

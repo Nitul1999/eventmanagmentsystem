@@ -4,3 +4,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.cards-items-organise{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

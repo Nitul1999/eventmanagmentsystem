@@ -1,6 +1,8 @@
 import React from 'react'
 import {useEffect,useState} from 'react'
 import { useParams } from 'react-router-dom'
+import{Events} from '../../componenets/Events/Events'
+import './eventpages.css'
 
 export const EventsOrganise = () => {
     const {id:organiseId} = useParams() 
@@ -25,12 +27,21 @@ export const EventsOrganise = () => {
       getevents();
       return;
     }, [organiseId])
+
+      if(!events) return (<div> Loading...... </div>)
+      if (events.length === 0) {
+          return (<div> There is nothing to show any events to user</div>);
+        }
   return (
-    <> 
-    {/* {events && events.map((event)=>{
-
-    })} */}
-
-    </>
+         <>
+            <div className="event-card-container-organise">
+                    <div className="cards-items-organise">
+                        {events && events.map((event)=>
+                            <Events key={event._id} event={event} />
+                        )}
+                    </div> 
+              </div>
+            
+          </>
   )
 }

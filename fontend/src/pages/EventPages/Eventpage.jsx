@@ -27,11 +27,11 @@ export const Eventpage = () => {
               if (organizerResponse.ok) {
               const organizer = await organizerResponse.json();
               orgdetails[event.organiseId] = organizer;
-            } else {
-              console.error(`Failed to fetch organizer details for ID ${event.organiseId}`);
-            }
-            }
-        setOrganizers(orgdetails);
+              } else {
+                console.error(`Failed to fetch organizer details for ID ${event.organiseId}`);
+              }
+              }
+          setOrganizers(orgdetails);
         
         }
         catch (error) {

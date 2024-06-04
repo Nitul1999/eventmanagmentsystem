@@ -20,7 +20,7 @@ export const Organise = ({organise}) => {
             <strong> <p> Organise Name:{organise.name}</p> </strong>
             <p>Email Id: {organise.email}</p>
             <div className="details">
-              <p> Services: {organise.service} </p>
+              <p> Services: {organise.service.join(', ')} </p>
               <p>Status: {organise.status ? 'Active' : 'Inactive'}</p>
             </div>
             <StarRating rating={organise.rating} />
